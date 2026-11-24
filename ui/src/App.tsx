@@ -83,7 +83,7 @@ function App() {
       <GameOver dealAccepted={dealAccepted} userCaseValue={userCaseValue} />
     )
   } else if (!userCaseSelected) {
-    gameStatus = <p className="text-2xl">Select your case.</p>
+    gameStatus = <p className="text-lg sm:text-2xl">Select your case.</p>
   } else if (casesLeftInRound === 0) {
     const dealAmount = calculateDealAmount(round)
     gameStatus = (
@@ -96,7 +96,7 @@ function App() {
   } else {
     gameStatus = (
       <div>
-        <p className="text-2xl">Open a case.</p>
+        <p className="text-lg sm:text-2xl">Open a case.</p>
         <p>
           You have <b>{casesLeftInRound}</b> left to open before the next offer.
         </p>
@@ -105,19 +105,23 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col gap-6 sm:flex-row h-screen">
-      <div className="sm:w-1/2 sm:h-full">
-        <Cases
-          cases={cases}
-          allCasesEnabled={!userCaseSelected}
-          allCasesDisabled={casesLeftInRound === 0}
-          onClick={!userCaseSelected ? selectUserCase : openCase}
-          showAllAmounts={gameOver}
-        />
-      </div>
-      <div className="flex flex-col sm:w-1/2 h-full p-2 sm:p-3 justify-between">
+    <div className="flex flex-col gap-3 sm:gap-6 p-3 h-screen w-screen">
+      <div className="flex justify-center w-full h-10 sm:h-15">
         {gameStatus}
-        <DollarAmounts cases={cases} />
+      </div>
+      <div className="flex flex-col w-full sm:flex-row gap-3 flex-grow">
+        <div className="flex-1 items-center">
+          <Cases
+            cases={cases}
+            allCasesEnabled={!userCaseSelected}
+            allCasesDisabled={casesLeftInRound === 0}
+            onClick={!userCaseSelected ? selectUserCase : openCase}
+            showAllAmounts={gameOver}
+          />
+        </div>
+        <div className="sm:w-100">
+          <DollarAmounts cases={cases} />
+        </div>
       </div>
     </div>
   )
