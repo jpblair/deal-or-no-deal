@@ -109,7 +109,7 @@ function App() {
       <div className="flex justify-center w-full h-10 sm:h-15">
         {gameStatus}
       </div>
-      <div className="flex flex-col w-full sm:flex-row gap-3 flex-grow">
+      <div className="flex flex-col w-full sm:flex-row gap-3 flex-grow items-center">
         <div className="flex-1 items-center">
           <Cases
             cases={cases}
@@ -119,7 +119,7 @@ function App() {
             showAllAmounts={gameOver}
           />
         </div>
-        <div className="sm:w-100">
+        <div className="sm:w-100 xl:w-150 2xl:w-200">
           <DollarAmounts cases={cases} />
         </div>
       </div>
